@@ -47,7 +47,7 @@ input[type="button"]:hover {
 
 .feedback-message {
   font-size: 0.9rem; /* Adjust font size as needed */
-  color: yellow; /* Change text color to yellow */
+  color: #333; /* Change text color to yellow */
   margin: 20px 0; /* Spacing around the message */
   text-align: center; /* Center the text */
 }
