@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send a Review</title>
+  <link rel="stylesheet" type="text/css" href="css/send.css">
+</head>
+<body>
+
+<h1>Send a Review</h1>
+
+<form id="reviewForm">
+  <label for="username">Name:</label>
+  <input type="text" id="username" name="username"><br><br>
+
+  <label for="review">Review:</label>
+  <textarea id="review" name="review"></textarea><br><br>
+  
+<p class="feedback-message">If you want direct feedback from your review, please send an email at <a href="mailto:support@teacherease.net>support@teacherease.net</a>.</p>
+  <input type="button" id="sendButton" value="Send Review" onclick="sendReview()">
+</form>
+
+<script>
+  var lastSentTime = 0;
+
+  function sendReview() {
+    var currentTime = new Date().getTime();
+
+    if (currentTime - lastSentTime < 10000) {
+        alert("You can send one review every 10 seconds.");
+        return;
+    }
+
+    var username = document.getElementById("username").value;
+    var review = document.getElementById("review").value;
+
+
+    // Continue sending review logic if none of the above conditions are met
+    fetch('/api/send-review.js', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: username,
+            review: review
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(error => {
+        console.error('Failed to send review:', error);
+        alert('Failed to send review.');
+    });
+}
+
+  function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    const expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+</script>
+
+</body>
+</html>
