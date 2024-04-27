@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+
+<body>
+    <div id="chat-container">
+        
+        <div id="main-content">
+            <!-- Active Users Count -->
+            <div id="activeUsers">
+                Active Users: <span id="userCounter">0</span>
+            </div>
+            
+            <div id="chatBox"></div>
+<div id="input-container">
+    <label for="imageInput" id="imageInputLabel">+</label>
+    <input type="text" id="messageInput" placeholder="Enter your message">
+    <input type="file" id="imageInput" accept="image/*" style="display: none;" />
+    <button id="sendMessage">Send</button>
+</div>
+        </div>
+
+        </div>
+        
+        <!-- Online Users Sidebar -->
+        <div id="onlineUsers">
+            <h4>Online Users</h4>
+         <ul id="activeUsersList"></ul>
+        </div>
+    </div>
+    <script src="/js/chat.js"></script>
+</body>
+</html>
+</script>
